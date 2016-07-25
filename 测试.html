@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<style type="text/css">
+		#container .button{
+			width: 100px;
+			height: 30px;
+			border-radius: 5px;
+			text-align: center;
+			line-height: 30px;
+			background-color: #666;
+			cursor: pointer;
+		}
+	</style>
+	<script type="text/javascript" src='jquery.min.js'></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var verCodePic = document.getElementsByClassName('verCodePic')[0];
+			var input_verCode = document.getElementById('input_verCode');
+			var buttonArr = document.getElementsByClassName('button');
+			var change = 0;
+			buttonArr[0].addEventListener('click', function(){
+				change++;
+				var url = 'http://localhost:5964/verificationCode?time=' + change;
+				verCodePic.setAttribute('src', url);
+			}, false);
+			buttonArr[1].addEventListener('click', function(){
+				var jsonData = {
+					verCode : input_verCode.value
+				};
+				$.ajax({
+					url : 'http://localhost:5964/goVerification',
+					type : 'GET',
+					data : jsonData,
+					dataType : 'jsonp',
+					success : function (data){
+						console.log(data);
+					}
+				});
+			}, false);
+		}
+	</script>
+</head>
+<body>
+<div id="container">
+	<img src="http://localhost:5964/verificationCode" alt="" class="verCodePic">
+	<div class="button">换一张</div>
+	<input type="text" id="input_verCode">
+	<div class="button">提交</div>
+</div>
+</body>
+</html>

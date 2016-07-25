@@ -1,0 +1,18 @@
+{
+  "name": "aaa",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {},
+  "devDependencies": {
+    "cookie-parser": "^1.4.3",
+    "express-session": "^1.14.0",
+    "ccap" : "^0.6.10",
+    "express" : "^4.14.0",
+    "node-gyp" : "^3.4.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ruihaoLee",
+  "license": "ISC"
+}
